@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource Allocation</title>
+</head>
+<body>
+    <h1>Resource Allocation Form</h1>
+
+    <form action="/generate" method="post">
+        <label for="expertise">Expertise:</label>
+        <select name="expertise" required>
+            <option value="Test Lead">Test Lead</option>
+            <option value="SAP Supply chain tester">SAP Supply chain tester</option>
+            <option value="Logistics">Logistics</option>
+            <option value="MPA">MPA</option>
+            <option value="BI">BI</option>
+            <option value="BI-Lead">BI-Lead</option>
+            <option value="Finance">Finance</option>
+            <option value="Automation">Automation</option>
+            <option value="Performance Testing">Performance Testing</option>
+        </select><br>
+        
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+       
+        <label for="internal_external">Internal/External:</label>
+        <select name="internal_external" required onchange="updateRateField()">
+            <option value="Internal">Internal</option>
+            <option value="External">External</option>
+        </select><br>
+        <label for="organization">Organization:</label>
+        <input type="text" name="organization" value="VSIT" required><br>
+
+        <label for="onshore_offshore">Onshore/Offshore:</label>
+        <select name="onshore_offshore" required>
+            <option value="Onshore">Onshore</option>
+            <option value="Offshore">Offshore</option>
+        </select><br>
+
+        <!-- Include other input fields for the remaining parameters -->
+        <label for="resource_manager">Resource Manager:</label>
+        <input type="text" name="resource_manager" required><br>
+
+        <label for="rate">Rate:</label>
+        <input type="text" name="rate" id="rate" required readonly><br>
+
+
+        <label for="feb_23">Feb'23:</label>
+        <input type="text" name="feb_23" ><br>
+
+        <label for="mar_23">Mar'23:</label>
+        <input type="text" name="mar_23" ><br>
+        
+        <label for="mar_23">Apr'23:</label>
+        <input type="text" name="apr_23" ><br>
+        
+        <label for="mar_23">May'23:</label>
+        <input type="text" name="may_23" ><br>
+        
+        <label for="mar_23">Jun'23:</label>
+        <input type="text" name="jun_23" ><br>
+        
+        <label for="mar_23">Jul'23:</label>
+        <input type="text" name="jul_23" ><br>
+        
+        <label for="mar_23">Aug'23:</label>
+        <input type="text" name="aug_23" ><br>
+        
+        <label for="mar_23">Sept'23:</label>
+        <input type="text" name="sept_23" ><br>
+        
+        <label for="mar_23">Oct'23:</label>
+        <input type="text" name="oct_23" ><br>
+        
+        <label for="mar_23">Nov'23:</label>
+        <input type="text" name="nov_23" ><br>
+        
+        <label for="mar_23">Dec'23:</label>
+        <input type="text" name="dec_23" ><br>
+        
+        <label for="mar_23">Jan'24:</label>
+        <input type="text" name="jan_24" ><br>
+        
+        <label for="mar_23">Feb'24:</label>
+        <input type="text" name="feb_24" ><br>
+        
+        <label for="mar_23">Mar'24:</label>
+        <input type="text" name="mar_24" ><br>
+
+
+
+        <!-- Include input fields for the remaining months -->
+
+        <label for="total_hours">Total Hours:</label>
+        <input type="text" name="total_hours" required><br>
+
+        <label for="total_amount">Total Amount:</label>
+        <input type="text" name="total_amount" required><br>
+
+
+        <input type="submit" value="Generate Excel">
+    </form>
+</body>
+<script>
+    function updateRateField() {
+        var internalExternalSelect = document.getElementById('internal_external');
+        var rateInput = document.getElementById('rate');
+
+        if (internalExternalSelect.value === 'Internal') {
+            // Set a fixed rate for Internal
+            rateInput.value = '20';
+            rateInput.setAttribute('readonly', true);
+        } else {
+            // Allow user to input rate for External
+            rateInput.value = '';
+            rateInput.removeAttribute('readonly');
+        }
+    }
+</script>
+
+</html>
