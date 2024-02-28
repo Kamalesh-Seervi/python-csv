@@ -28,8 +28,8 @@
        
         <label for="internal_external">Internal/External:</label>
         <select name="internal_external" required onchange="updateRateField()">
-            <option value="Internal">Internal</option>
             <option value="External">External</option>
+            <option value="Internal">Internal</option>
         </select><br>
         <label for="organization">Organization:</label>
         <input type="text" name="organization" value="VSIT" required><br>
@@ -103,22 +103,21 @@
 
         <input type="submit" value="Generate Excel">
     </form>
-</body>
-<script>
-    function updateRateField() {
-        var internalExternalSelect = document.getElementById('internal_external');
-        var rateInput = document.getElementById('rate');
-
-        if (internalExternalSelect.value === 'Internal') {
-            // Set a fixed rate for Internal
-            rateInput.value = '20';
-            rateInput.setAttribute('readonly', true);
-        } else {
-            // Allow user to input rate for External
-            rateInput.value = '';
-            rateInput.removeAttribute('readonly');
+    <script>
+        function updateRateField() {
+            var internalExternalSelect = document.getElementsByName('internal_external')[0];
+            var rateInput = document.getElementById('rate');
+    
+            if (internalExternalSelect.value === 'Internal') {
+                // Set a fixed rate for Internal
+                rateInput.value = '20';
+                rateInput.setAttribute('readonly', true);
+            } else {
+                // Allow the user to input rate for External
+                rateInput.value = '';
+                rateInput.removeAttribute('readonly');
+            }
         }
-    }
-</script>
+    </script>
 
 </html>
