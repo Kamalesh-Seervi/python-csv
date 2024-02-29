@@ -4,6 +4,15 @@ import pandas as pd
 app = Flask(__name__)
 
 @app.route('/')
+def high():
+    return render_template('high.html')
+
+@app.route('/efforts.html')
+def render_efforts():
+    project_name = request.args.get('projectName')
+    # Your code to handle the project_name parameter
+    return render_template('efforts.html', project_name=project_name)
+@app.route('/index.html')
 def index():
     return render_template('index.html')
 
@@ -52,8 +61,9 @@ def generate():
     # Create a DataFrame with the entered data for all rows
     df = pd.DataFrame(rows_data)
 
-    # Save DataFrame to Excel file
-    excel_filename = 'output.xlsx'
+    # Save DataFrame to Excel file with a dynamic filename
+    project_name = request.form.get('project_name')
+    excel_filename = f'{project_name}_output.xlsx'
     df.to_excel(excel_filename, index=False)
 
     return send_file(excel_filename, as_attachment=True)
